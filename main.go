@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"receiptvalidator/ios"
+	"encoding/json"
 )
 
 func main() {
@@ -13,5 +14,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Got receipt", receipt)
+	receiptData, err := json.Marshal(receipt)
+
+	if err != nil {
+		fmt.Println("Failed to convert receipt")
+	}
+
+	fmt.Println("Got receipt", string(receiptData))
 }
