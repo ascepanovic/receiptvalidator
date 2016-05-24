@@ -13,10 +13,21 @@ import (
 //
 // Documentation: https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html#//apple_ref/doc/uid/TP40010573-CH106-SW10
 type Receipt struct {
+	ReceiptType                string            `json:"receipt_type"`
+	AdamId                     int               `json:"adam_id"`
+	AppItemId         	   int               `json:"app_item_id"`
 	BundleId                   string            `json:"bundle_id"`
 	ApplicationVersion         string            `json:"application_version"`
-	InApp                      []PurchaseReceipt `json:"in_app"`
+	DownloadId                 int               `json:"download_id"`
+	VersionExternalIdentifier  int               `json:"version_external_identifier"`
+	ReceiptCreationDate  	   string            `json:"receipt_creation_date"`
+	ReceiptCreationDateMs  	   string            `json:"receipt_creation_date_ms"`
+	ReceiptCreationDatePst     string            `json:"receipt_creation_date_pst"`
+	OriginalPurchaseDate       string            `json:"original_purchase_date"`
+	OriginalPurchaseDateMs     string            `json:"original_purchase_date_ms"`
+	OriginalPurchaseDatePst    string            `json:"original_purchase_date_pst"`
 	OriginalApplicationVersion string            `json:"original_application_version"`
+	InApp                      []PurchaseReceipt `json:"in_app"`
 }
 
 //CHECK OUT what are required fields and so on
