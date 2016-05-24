@@ -1,4 +1,3 @@
-// Package goiap implements the ability to easily validate a receipt with apples verifyReceipt service
 package ios
 
 import (
@@ -10,18 +9,17 @@ import (
 )
 
 // Receipt is information returned by Apple
-//
 // Documentation: https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html#//apple_ref/doc/uid/TP40010573-CH106-SW10
 type Receipt struct {
 	ReceiptType                string            `json:"receipt_type"`
-	AdamId                     int               `json:"adam_id"`
-	AppItemId         	   int               `json:"app_item_id"`
-	BundleId                   string            `json:"bundle_id"`
+	AdamID                     int               `json:"adam_id"`
+	AppItemID                  int               `json:"app_item_id"`
+	BundleID                   string            `json:"bundle_id"`
 	ApplicationVersion         string            `json:"application_version"`
-	DownloadId                 int               `json:"download_id"`
+	DownloadID                 int               `json:"download_id"`
 	VersionExternalIdentifier  int               `json:"version_external_identifier"`
-	ReceiptCreationDate  	   string            `json:"receipt_creation_date"`
-	ReceiptCreationDateMs  	   string            `json:"receipt_creation_date_ms"`
+	ReceiptCreationDate        string            `json:"receipt_creation_date"`
+	ReceiptCreationDateMs      string            `json:"receipt_creation_date_ms"`
 	ReceiptCreationDatePst     string            `json:"receipt_creation_date_pst"`
 	OriginalPurchaseDate       string            `json:"original_purchase_date"`
 	OriginalPurchaseDateMs     string            `json:"original_purchase_date_ms"`
@@ -30,12 +28,12 @@ type Receipt struct {
 	InApp                      []PurchaseReceipt `json:"in_app"`
 }
 
-//CHECK OUT what are required fields and so on
+//PurchaseReceipt CHECK OUT what are required fields and so on
 type PurchaseReceipt struct {
 	Quantity                string `json:"quantity"`
-	ProductId               string `json:"product_id"`
-	TransactionId           string `json:"transaction_id"`
-	OriginalTransactionId   string `json:"original_transaction_id"`
+	ProductID               string `json:"product_id"`
+	TransactionID           string `json:"transaction_id"`
+	OriginalTransactionID   string `json:"original_transaction_id"`
 	PurchaseDate            string `json:"purchase_date"`
 	PurchaseDateMs          string `json:"purchase_date_ms"`
 	PurchaseDatePst         string `json:"purchase_date_pst"`
@@ -54,12 +52,12 @@ const (
 	appleProductionURL string = "https://buy.itunes.apple.com/verifyReceipt"
 )
 
+//Error basic struct
 type Error struct {
 	error
 }
 
-// Given receiptData (base64 encoded) it tries to connect to either the sandbox (useSandbox true) or
-// apples ordinary service (useSandbox false) to validate the receipt. Returns either a receipt struct or an error.
+//VerifyReceipt Given receiptData (base64 encoded) it tries to connect to either the sandbox (useSandbox true) or apples ordinary service (useSandbox false) to validate the receipt. Returns either a receipt struct or an error.
 func VerifyReceipt(receiptData string, useSandbox bool) (*Receipt, error) {
 	receipt, err := sendReceiptToApple(receiptData, verificationURL(useSandbox))
 	return receipt, err
@@ -148,7 +146,7 @@ func verificationError(errCode float64) error {
 		errorMessage = "This receipt is a production receipt, but it was sent to the sandbox service for verification."
 		break
 	default:
-		errorMessage = "An unknown error ocurred"
+		errorMessage = "An unknown error ocurred."
 		break
 	}
 
