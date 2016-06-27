@@ -11,3 +11,6 @@ Since external apis can be changed here is the info about suport for IOS, Amazon
 [AMAZON - Receipt Verification Service (RVS) (IAP v2.0)] (https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/verifying-receipts-in-iap-2.0)
 
 [FACEBOOK - Game payments Fulfillment] (https://developers.facebook.com/docs/games_payments/fulfillment)
+
+
+Pull requests and ideas for improvement are more than welcome.
